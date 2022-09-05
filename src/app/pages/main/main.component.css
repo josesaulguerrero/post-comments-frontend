@@ -1,4 +1,5 @@
-.posts-container {
+.posts-container,
+.create-post-form-container {
   width: 100%;
   height: auto;
   display: flex;

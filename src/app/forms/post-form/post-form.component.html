@@ -1,0 +1,27 @@
+<form class="create-post-form">
+  <label for="post-title" class="post-title-field">
+    <span>What is your post about? </span>
+    <input
+      type="text"
+      id="post-title"
+      name="post-title"
+      required
+      maxlength="250"
+    />
+  </label>
+  <label for="post-author" class="post-author-field">
+    <span>Type in your name: </span>
+    <input
+      type="text"
+      id="post-author"
+      name="post-author"
+      required
+      maxlength="40"
+    />
+  </label>
+  <label for="post-content" class="post-content-field">
+    <span>Tell everyone a bit more about your idea: </span>
+    <textarea name="post-content" id="post-content" required></textarea>
+  </label>
+  <button type="submit" class="submit-button">Post</button>
+</form>
