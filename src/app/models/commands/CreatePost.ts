@@ -1,6 +1,6 @@
 export interface CreatePost {
-  author: String;
-  title: String;
-  content: String;
-  postedAt: Date;
+  author: string;
+  title: string;
+  content: string;
+  postedAt: string;
 }
