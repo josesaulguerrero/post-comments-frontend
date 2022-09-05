@@ -2,6 +2,7 @@
   <label for="comment-author" class="comment-author-field">
     <span>Type in your name: </span>
     <input
+      [(ngModel)]="author"
       type="text"
       id="comment-author"
       name="comment-author"
@@ -11,7 +12,14 @@
   </label>
   <label for="comment-content" class="comment-content-field">
     <span>Tell everyone your opinion: </span>
-    <textarea name="comment-content" id="comment-content" required></textarea>
+    <textarea
+      [(ngModel)]="content"
+      name="comment-content"
+      id="comment-content"
+      required
+    ></textarea>
   </label>
-  <button type="submit" class="submit-button">Post</button>
+  <button type="submit" class="submit-button" (submit)="handleSubmit()">
+    Post
+  </button>
 </form>
