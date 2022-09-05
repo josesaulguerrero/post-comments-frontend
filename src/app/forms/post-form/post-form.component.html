@@ -2,6 +2,7 @@
   <label for="post-title" class="post-title-field">
     <span>What is your post about? </span>
     <input
+      [(ngModel)]="title"
       type="text"
       id="post-title"
       name="post-title"
@@ -12,6 +13,7 @@
   <label for="post-author" class="post-author-field">
     <span>Type in your name: </span>
     <input
+      [(ngModel)]="author"
       type="text"
       id="post-author"
       name="post-author"
@@ -21,7 +23,14 @@
   </label>
   <label for="post-content" class="post-content-field">
     <span>Tell everyone a bit more about your idea: </span>
-    <textarea name="post-content" id="post-content" required></textarea>
+    <textarea
+      name="post-content"
+      id="post-content"
+      required
+      [(ngModel)]="content"
+    ></textarea>
   </label>
-  <button type="submit" class="submit-button">Post</button>
+  <button type="submit" (click)="handleSubmit()" class="submit-button">
+    Post
+  </button>
 </form>
