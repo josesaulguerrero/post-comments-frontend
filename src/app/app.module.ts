@@ -7,9 +7,17 @@ import { HeaderComponent } from './components/header/header.component';
 import { PostComponent } from './components/post/post.component';
 import { MainComponent } from './pages/main/main.component';
 import { PostFormComponent } from './forms/post-form/post-form.component';
+import { CommentFormComponent } from './forms/comment-form/comment-form.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, PostComponent, MainComponent, PostFormComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    PostComponent,
+    MainComponent,
+    PostFormComponent,
+    CommentFormComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

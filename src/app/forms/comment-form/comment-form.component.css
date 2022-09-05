@@ -1,11 +1,4 @@
-:host {
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-}
-
-.create-post-form {
+.create-comment-form {
   width: 100%;
   max-width: 500px;
   display: flex;
@@ -40,7 +33,7 @@
 
 [class$="-field"] > textarea {
   resize: none;
-  height: 100px;
+  height: 60px;
 }
 
 [class$="-field"] > input:focus-within,
