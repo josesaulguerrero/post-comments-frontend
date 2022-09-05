@@ -1,3 +1,7 @@
+:host {
+  width: 100%;
+}
+
 .create-comment-form {
   width: 100%;
   max-width: 500px;

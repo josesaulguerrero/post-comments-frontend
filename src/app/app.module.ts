@@ -8,6 +8,7 @@ import { PostComponent } from './components/post/post.component';
 import { MainComponent } from './pages/main/main.component';
 import { PostFormComponent } from './forms/post-form/post-form.component';
 import { CommentFormComponent } from './forms/comment-form/comment-form.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { CommentFormComponent } from './forms/comment-form/comment-form.componen
     MainComponent,
     PostFormComponent,
     CommentFormComponent,
+    CommentComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
