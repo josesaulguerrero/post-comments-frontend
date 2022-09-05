@@ -10,6 +10,7 @@ import { MainComponent } from './pages/main/main.component';
 import { PostFormComponent } from './forms/post-form/post-form.component';
 import { CommentFormComponent } from './forms/comment-form/comment-form.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { CommentComponent } from './components/comment/comment.component';
     CommentFormComponent,
     CommentComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
