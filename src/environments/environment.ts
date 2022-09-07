@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   ALPHA_URL: 'url',
+  BETA_URL: 'url',
 };
 
 /*
