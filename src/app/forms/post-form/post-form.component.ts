@@ -2,16 +2,15 @@ import { environment } from './../../../environments/environment';
 import { CreatePost } from './../../models/commands/CreatePost';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'app-post-form',
   templateUrl: './post-form.component.html',
   styleUrls: ['./post-form.component.css'],
 })
 export class PostFormComponent {
-  public author!: string;
-  public title!: string;
-  public content!: string;
+  public author: string;
+  public title: string;
+  public content: string;
   private url: string;
 
   constructor(private httpClient: HttpClient) {
