@@ -1,5 +1,5 @@
 export interface CommentView {
-  _id: string;
+  id: string;
   postId: string;
   author: string;
   content: string;
