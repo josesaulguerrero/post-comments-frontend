@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { PostComponent } from './components/post/post.component';
+import { PostCardComponent } from './components/post-card/post-card.component';
 import { MainComponent } from './pages/main/main.component';
 import { PostFormComponent } from './forms/post-form/post-form.component';
 import { CommentFormComponent } from './forms/comment-form/comment-form.component';
@@ -17,7 +17,7 @@ import { PostDetailComponent } from './pages/post-detail/post-detail.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    PostComponent,
+    PostCardComponent,
     MainComponent,
     PostFormComponent,
     CommentFormComponent,
