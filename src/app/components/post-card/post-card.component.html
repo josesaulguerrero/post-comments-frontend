@@ -1,5 +1,10 @@
-<article class="post">
-  <h3 class="post-title">Post title</h3>
-  <span class="post-author">Author</span>
-  <span class="post-date">Posted On {{ date | date: "MMM d, y, h:mm a" }}</span>
+<article class="post-card">
+  <a href="#" class="link-wrapper">
+    <h3 class="title">Post title</h3>
+    <span class="author">Author</span>
+    <span class="date">Posted On {{ date | date: "MMM d, y, h:mm a" }}</span>
+    <button class="go-to-button">
+      <img src="../../../assets/arrow.png" alt="arrow icon" width="100%" />
+    </button>
+  </a>
 </article>
