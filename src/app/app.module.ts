@@ -11,6 +11,7 @@ import { PostFormComponent } from './forms/post-form/post-form.component';
 import { CommentFormComponent } from './forms/comment-form/comment-form.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { FormsModule } from '@angular/forms';
+import { PostDetailComponent } from './pages/post-detail/post-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FormsModule } from '@angular/forms';
     PostFormComponent,
     CommentFormComponent,
     CommentComponent,
+    PostDetailComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
