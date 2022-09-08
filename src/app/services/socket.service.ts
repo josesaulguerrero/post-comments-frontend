@@ -8,13 +8,13 @@ import { CommentView } from '../models/views/Comment';
   providedIn: 'root',
 })
 export class SocketService {
-  constructor() {}
-
-  public connectToMainSpace(): WebSocketSubject<PostView> {
-    return webSocket(`${environment.GAMMA_URL}/retrieve/mainSpace`);
-  }
-
-  public connectToPostSpace(postId: string): WebSocketSubject<CommentView> {
+  public connectToPostSpace = (
+    postId: string
+  ): WebSocketSubject<CommentView> => {
     return webSocket(`${environment.GAMMA_URL}/retrieve/${postId}`);
-  }
+  };
+
+  public connectToMainSpace = (): WebSocketSubject<PostView> => {
+    return webSocket(`${environment.GAMMA_URL}/retrieve/mainSpace`);
+  };
 }
