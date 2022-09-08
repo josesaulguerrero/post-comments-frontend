@@ -1,5 +1,6 @@
 export interface CreateComment {
-  author: String;
-  content: String;
+  postId: string;
+  author: string;
+  content: string;
   postedAt: Date;
 }
