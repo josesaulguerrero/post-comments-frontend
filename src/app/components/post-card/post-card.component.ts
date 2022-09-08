@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { PostView } from './../../models/views/Post';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-post-card',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-card.component.css'],
 })
 export class PostCardComponent {
-  public date: Date = new Date();
+  @Input()
+  public post!: PostView;
 
   constructor() {}
 }

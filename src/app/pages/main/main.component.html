@@ -1,6 +1,6 @@
 <section class="posts-container">
   <app-post-form></app-post-form>
-  <app-post-card></app-post-card>
-  <app-post-card></app-post-card>
-  <app-post-card></app-post-card>
+  <ng-container *ngFor="let post of posts">
+    <app-post-card [post]="post"></app-post-card>
+  </ng-container>
 </section>

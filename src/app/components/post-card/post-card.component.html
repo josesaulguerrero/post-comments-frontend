@@ -1,8 +1,10 @@
 <article class="post-card">
-  <a href="#" class="link-wrapper">
-    <h3 class="title">Post title</h3>
-    <span class="author">Author</span>
-    <span class="date">Posted On {{ date | date: "MMM d, y, h:mm a" }}</span>
+  <a [routerLink]="['posts/', post.id]" class="link-wrapper">
+    <h3 class="title">{{ post.title }}</h3>
+    <span class="author">{{ post.author }}</span>
+    <span class="date"
+      >Posted On {{ post.postedAt | date: "MMM d, y, h:mm a" }}</span
+    >
     <button class="go-to-button">
       <img src="../../../assets/arrow.png" alt="arrow icon" width="100%" />
     </button>
