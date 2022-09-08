@@ -1,4 +1,4 @@
-<form class="create-comment-form">
+<form class="create-comment-form" (submit)="handleSubmit()">
   <label for="comment-author" class="comment-author-field">
     <span>Type in your name: </span>
     <input
@@ -19,7 +19,5 @@
       required
     ></textarea>
   </label>
-  <button type="submit" class="submit-button" (submit)="handleSubmit()">
-    Post
-  </button>
+  <button type="submit" class="submit-button">Post</button>
 </form>
