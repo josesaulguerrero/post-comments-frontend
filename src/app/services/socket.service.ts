@@ -15,6 +15,6 @@ export class SocketService {
   }
 
   public connectToPostSpace(postId: string): WebSocketSubject<CommentView> {
-    return webSocket(`${environment.GAMMA_URL}/retrieve${postId}`);
+    return webSocket(`${environment.GAMMA_URL}/retrieve/${postId}`);
   }
 }
