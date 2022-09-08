@@ -25,7 +25,7 @@ export class PostFormComponent {
       author: this.author,
       content: this.content,
       title: this.title,
-      postedAt: new Date().toJSON(),
+      postedAt: new Date().toISOString(),
     };
 
     this.httpClient
