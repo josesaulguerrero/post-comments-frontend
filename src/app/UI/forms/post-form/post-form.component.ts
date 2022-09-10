@@ -12,15 +12,18 @@ export class PostFormComponent {
   public title: string;
   public content: string;
   private url: string;
+  public pending: boolean;
 
   constructor(private httpClient: HttpClient) {
     this.author = '';
     this.title = '';
     this.content = '';
     this.url = `${environment.ALPHA_URL}/create/post`;
+    this.pending = false;
   }
 
   public handleSubmit() {
+    this.pending = true;
     const command: CreatePost = {
       author: this.author,
       content: this.content,
@@ -34,6 +37,13 @@ export class PostFormComponent {
           'Content-Type': 'application/json',
         },
       })
-      .subscribe();
+      .subscribe({
+        next: () => {
+          this.pending = false;
+        },
+        error: () => {
+          this.pending = false;
+        },
+      });
   }
 }

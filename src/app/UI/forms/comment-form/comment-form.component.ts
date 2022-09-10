@@ -14,14 +14,17 @@ export class CommentFormComponent {
   public author!: string;
   public content!: string;
   private baseURL: string;
+  public pending: boolean;
 
   constructor(private httpClient: HttpClient) {
     this.author = '';
     this.content = '';
     this.baseURL = `${environment.ALPHA_URL}/add/comment`;
+    this.pending = false;
   }
 
   public handleSubmit() {
+    this.pending = true;
     const command: CreateComment = {
       postId: this.postId,
       author: this.author,
@@ -34,6 +37,13 @@ export class CommentFormComponent {
           'Content-Type': 'application/json',
         },
       })
-      .subscribe();
+      .subscribe({
+        next: () => {
+          this.pending = false;
+        },
+        error: () => {
+          this.pending = false;
+        },
+      });
   }
 }

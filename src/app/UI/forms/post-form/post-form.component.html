@@ -1,4 +1,4 @@
-<form class="create-post-form">
+<form class="create-post-form" (submit)="handleSubmit()">
   <label for="post-title" class="post-title-field">
     <span>What is your post about? </span>
     <input
@@ -30,7 +30,7 @@
       [(ngModel)]="content"
     ></textarea>
   </label>
-  <button type="submit" (click)="handleSubmit()" class="submit-button">
-    Post
+  <button type="submit" class="submit-button" [disabled]="pending">
+    {{ pending ? "Loading..." : "Post" }}
   </button>
 </form>

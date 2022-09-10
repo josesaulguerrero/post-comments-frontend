@@ -19,5 +19,7 @@
       required
     ></textarea>
   </label>
-  <button type="submit" class="submit-button">Post</button>
+  <button type="submit" class="submit-button" [disabled]="pending">
+    {{ pending ? "Loading..." : "Post" }}
+  </button>
 </form>
