@@ -1,9 +1,9 @@
-import { environment } from './../../../environments/environment';
-import { CommentView } from './../../models/views/Comment';
+import { CommentView } from 'src/app/models/views/Comment';
+import { environment } from 'src/environments/environment';
 import { WebSocketSubject } from 'rxjs/webSocket';
-import { SocketService } from './../../services/socket.service';
+import { SocketService } from 'src/app/services/socket.service';
 import { HttpClient } from '@angular/common/http';
-import { PostView } from './../../models/views/Post';
+import { PostView } from 'src/app/models/views/Post';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable, switchMap, tap } from 'rxjs';

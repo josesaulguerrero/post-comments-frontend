@@ -1,7 +1,7 @@
-import { SocketService } from './../../services/socket.service';
+import { SocketService } from 'src/app/services/socket.service';
 import { WebSocketSubject } from 'rxjs/webSocket';
 import { HttpClient } from '@angular/common/http';
-import { PostView } from './../../models/views/Post';
+import { PostView } from 'src/app/models/views/Post';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs';

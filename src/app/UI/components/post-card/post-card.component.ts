@@ -1,4 +1,4 @@
-import { PostView } from './../../models/views/Post';
+import { PostView } from 'src/app/models/views/Post';
 import { Component, Input } from '@angular/core';
 
 @Component({

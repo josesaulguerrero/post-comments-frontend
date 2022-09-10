@@ -1,5 +1,5 @@
-import { environment } from './../../../environments/environment';
-import { CreatePost } from './../../models/commands/CreatePost';
+import { environment } from 'src/environments/environment';
+import { CreatePost } from 'src/app/models/commands/CreatePost';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 @Component({
