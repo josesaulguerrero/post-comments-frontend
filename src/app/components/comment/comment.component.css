@@ -1,19 +1,24 @@
-.comment-container {
+.comment {
   width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: space-between;
+  margin: 20px 0;
+  padding: 20px 15px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.comment-author {
+.author {
   font-size: 1.3rem;
 }
 
-.comment-date {
+.date {
   font-size: 1.2rem;
 }
 
-.comment-content {
-  margin-top: 15px;
-  font-size: 1.4rem;
+.content {
+  font-size: 1.6rem;
+  margin: 5px 0 0;
 }

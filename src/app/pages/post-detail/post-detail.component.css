@@ -1,0 +1,36 @@
+.post-detail {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  padding: 50px 0;
+}
+
+.post,
+.comments {
+  width: 100%;
+  max-width: 550px;
+  padding: 15px 20px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.author {
+  font-size: 1.3rem;
+}
+
+.date {
+  font-size: 1.2rem;
+}
+
+.content {
+  font-size: 1.6rem;
+  margin: 20px 0 0;
+}

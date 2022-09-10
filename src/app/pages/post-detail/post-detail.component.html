@@ -1,0 +1,18 @@
+<main class="post-detail">
+  <ng-container *ngIf="!!post" class="">
+    <section class="post">
+      <h3 class="title">{{ post.title }}</h3>
+      <span class="author">{{ post.author }}</span>
+      <span class="date"
+        >Posted On {{ post.postedAt | date: "MMM d, y, h:mm a" }}</span
+      >
+      <p class="content">{{ post.content }}</p>
+    </section>
+    <section class="comments">
+      <app-comment-form class="form" [postId]="post.id"></app-comment-form>
+      <ng-container *ngFor="let comment of post.comments">
+        <app-comment [comment]="comment"></app-comment>
+      </ng-container>
+    </section>
+  </ng-container>
+</main>

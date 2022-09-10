@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CommentView } from 'src/app/models/views/Comment';
 
 @Component({
   selector: 'app-comment',
@@ -6,7 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./comment.component.css'],
 })
 export class CommentComponent {
-  public date: Date = new Date();
+  @Input()
+  public comment!: CommentView;
 
   constructor() {}
 }
