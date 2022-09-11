@@ -1,20 +1,19 @@
-import { PostView } from '../models/views/Post';
 import { Injectable } from '@angular/core';
-import { WebSocketSubject, webSocket } from 'rxjs/webSocket';
-import { environment } from 'src/environments/environment';
-import { CommentView } from '../models/views/Comment';
+import { STOMPService } from './stomp.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SocketService {
-  public connectToPostSpace = (
-    postId: string
-  ): WebSocketSubject<CommentView> => {
-    return webSocket(`${environment.GAMMA_URL}/retrieve/${postId}`);
-  };
+  public constructor(private stompService: STOMPService) {
+    this.stompService.activate();
+  }
 
-  public connectToMainSpace = (): WebSocketSubject<PostView> => {
-    return webSocket(`${environment.GAMMA_URL}/retrieve/mainSpace`);
-  };
+  public listenToPostCreatedEvents() {
+    return this.stompService.watch('/topic/post.created');
+  }
+
+  public listenToCommendAddedEvents(postId: string) {
+    return this.stompService.watch(`/topic/${postId}/comment.added`);
+  }
 }

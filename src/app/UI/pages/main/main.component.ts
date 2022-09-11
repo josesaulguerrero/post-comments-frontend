@@ -1,10 +1,9 @@
 import { SocketService } from 'src/app/services/socket.service';
-import { WebSocketSubject } from 'rxjs/webSocket';
 import { HttpClient } from '@angular/common/http';
 import { PostView } from 'src/app/models/views/Post';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs';
+import { map, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -14,7 +13,7 @@ import { map } from 'rxjs';
 export class MainComponent implements OnInit, OnDestroy {
   public posts!: PostView[];
   private baseUrl: string;
-  private WSSubject$!: WebSocketSubject<PostView>;
+  private socketSubscription!: Subscription;
 
   constructor(
     private httpClient: HttpClient,
@@ -25,20 +24,21 @@ export class MainComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.fetchAllPosts();
-    this.WSSubject$ = this.connectToWS();
-    this.WSSubject$.subscribe({
-      next: (post) => {
-        this.posts.unshift(post);
-      },
-    });
+    this.connectToWS();
   }
 
   ngOnDestroy(): void {
-    this.WSSubject$.complete();
+    this.socketSubscription.unsubscribe();
   }
 
-  private connectToWS(): WebSocketSubject<PostView> {
-    return this.socketService.connectToMainSpace();
+  private connectToWS(): void {
+    this.socketSubscription = this.socketService
+      .listenToPostCreatedEvents()
+      .subscribe({
+        next: (socketMessage) => {
+          this.posts.unshift(JSON.parse(socketMessage.body));
+        },
+      });
   }
 
   private fetchAllPosts(): void {

@@ -1,12 +1,10 @@
-import { CommentView } from 'src/app/models/views/Comment';
 import { environment } from 'src/environments/environment';
-import { WebSocketSubject } from 'rxjs/webSocket';
 import { SocketService } from 'src/app/services/socket.service';
 import { HttpClient } from '@angular/common/http';
 import { PostView } from 'src/app/models/views/Post';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, Observable, switchMap, tap } from 'rxjs';
+import { map, Observable, switchMap, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-post-detail',
@@ -15,7 +13,7 @@ import { map, Observable, switchMap, tap } from 'rxjs';
 })
 export class PostDetailComponent implements OnInit, OnDestroy {
   public post!: PostView;
-  private WSSubject!: WebSocketSubject<CommentView>;
+  private socketSubscription!: Subscription;
   private baseURL: string;
 
   constructor(
@@ -32,7 +30,7 @@ export class PostDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.WSSubject.complete();
+    this.socketSubscription.unsubscribe();
   }
 
   private getPostIdFromRoute(): Observable<string> {
@@ -44,16 +42,15 @@ export class PostDetailComponent implements OnInit, OnDestroy {
   }
 
   private connectToWS(): void {
-    this.getPostIdFromRoute()
+    this.socketSubscription = this.getPostIdFromRoute()
       .pipe(
         switchMap((postId) => {
-          this.WSSubject = this.socketService.connectToPostSpace(postId);
-          return this.WSSubject;
+          return this.socketService.listenToCommendAddedEvents(postId);
         })
       )
       .subscribe({
-        next: (comment) => {
-          this.post.comments.unshift(comment);
+        next: (socketMessage) => {
+          this.post.comments.unshift(JSON.parse(socketMessage.body));
         },
       });
   }
