@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  ALPHA_URL: 'https://murmuring-eyrie-57231.herokuapp.com',
+  BETA_URL: 'https://sheltered-headland-06914.herokuapp.com',
+  GAMMA_URL: 'https://young-ridge-20094.herokuapp.com',
 };
