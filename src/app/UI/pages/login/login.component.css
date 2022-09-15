@@ -1,0 +1,50 @@
+.login {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.floating-section {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  padding: 15px 20px;
+  border-radius: 5px;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, .2);
+}
+
+.button {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px;
+  border: none;
+  background-color: rgb(46, 105, 231);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: scale .2s;
+}
+
+.button:hover {
+  scale: 1.01;
+}
+
+.button img {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.message {
+  flex: 1;
+  color: white;
+  font-weight: bold;
+}
