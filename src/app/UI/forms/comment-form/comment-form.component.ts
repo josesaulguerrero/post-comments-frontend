@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CreateComment } from 'src/app/models/commands/CreateComment';
+import { JwtService } from 'src/app/services/jwt.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -8,19 +9,29 @@ import { environment } from 'src/environments/environment';
   templateUrl: './comment-form.component.html',
   styleUrls: ['./comment-form.component.css'],
 })
-export class CommentFormComponent {
+export class CommentFormComponent implements OnInit {
   @Input()
   public postId!: string;
   public author!: string;
   public content!: string;
   private baseURL: string;
   public pending: boolean;
+  public userHasJWT: boolean;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private jwtService: JwtService) {
     this.author = '';
     this.content = '';
     this.baseURL = `${environment.ALPHA_URL}/add/comment`;
     this.pending = false;
+    this.userHasJWT = false;
+  }
+
+  ngOnInit(): void {
+    this.jwtService.getJWT().subscribe({
+      next: (next) => {
+        this.userHasJWT = !!next;
+      },
+    });
   }
 
   public handleSubmit() {

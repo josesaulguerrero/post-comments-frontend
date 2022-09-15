@@ -1,25 +1,36 @@
 import { environment } from 'src/environments/environment';
 import { CreatePost } from 'src/app/models/commands/CreatePost';
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { JwtService } from 'src/app/services/jwt.service';
 @Component({
   selector: 'app-post-form',
   templateUrl: './post-form.component.html',
   styleUrls: ['./post-form.component.css'],
 })
-export class PostFormComponent {
+export class PostFormComponent implements OnInit {
   public author: string;
   public title: string;
   public content: string;
   private url: string;
   public pending: boolean;
+  public userHasJWT: boolean;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private jwtService: JwtService) {
     this.author = '';
     this.title = '';
     this.content = '';
     this.url = `${environment.ALPHA_URL}/create/post`;
     this.pending = false;
+    this.userHasJWT = false;
+  }
+
+  ngOnInit(): void {
+    this.jwtService.getJWT().subscribe({
+      next: (next) => {
+        this.userHasJWT = !!next;
+      },
+    });
   }
 
   public handleSubmit() {

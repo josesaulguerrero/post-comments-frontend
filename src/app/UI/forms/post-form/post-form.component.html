@@ -1,4 +1,9 @@
-<form class="create-post-form" (submit)="handleSubmit()" ngNativeValidate>
+<form
+  class="create-post-form"
+  (submit)="handleSubmit()"
+  ngNativeValidate
+  *ngIf="userHasJWT; else elseTemplate"
+>
   <label for="post-title" class="post-title-field">
     <span>What is your post about? </span>
     <input
@@ -34,3 +39,8 @@
     {{ pending ? "Loading..." : "Post" }}
   </button>
 </form>
+<ng-template #elseTemplate>
+  <section class="denied-write-access">
+    <p>You have read permission only.</p>
+  </section>
+</ng-template>
