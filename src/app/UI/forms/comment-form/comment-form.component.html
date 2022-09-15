@@ -2,7 +2,7 @@
   class="create-comment-form"
   (submit)="handleSubmit()"
   ngNativeValidate
-  *ngIf="userHasJWT"
+  *ngIf="userHasJWT; else deniedWriteAccess"
 >
   <label for="comment-author" class="comment-author-field">
     <span>Type in your name: </span>
@@ -28,7 +28,7 @@
     {{ pending ? "Loading..." : "Post" }}
   </button>
 </form>
-<ng-template>
+<ng-template #deniedWriteAccess>
   <section class="denied-write-access">
     <p>You have read permissions only.</p>
   </section>
