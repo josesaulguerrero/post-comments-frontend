@@ -9,7 +9,7 @@ export const environment = {
     measurementId: 'G-V94RLED3CC',
   },
   production: true,
-  ALPHA_URL: 'https://murmuring-eyrie-57231.herokuapp.com',
-  BETA_URL: 'https://sheltered-headland-06914.herokuapp.com',
-  GAMMA_URL: 'WSS://young-ridge-20094.herokuapp.com',
+  ALPHA_URL: 'https://alpha-8923.herokuapp.com',
+  BETA_URL: 'https://beta-0691.herokuapp.com',
+  GAMMA_URL: 'WSS://gamma-2009.herokuapp.com',
 };
