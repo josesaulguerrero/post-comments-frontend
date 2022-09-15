@@ -12,9 +12,10 @@ import { CommentFormComponent } from './UI/forms/comment-form/comment-form.compo
 import { CommentComponent } from './UI/components/comment/comment.component';
 import { FormsModule } from '@angular/forms';
 import { PostDetailComponent } from './UI/pages/post-detail/post-detail.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { LoginComponent } from './UI/pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,16 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     CommentFormComponent,
     CommentComponent,
     PostDetailComponent,
+    LoginComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth())],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
