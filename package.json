@@ -6,6 +6,8 @@
     "start:dev": "ng serve --configuration=development",
     "start:prod": "ng serve --configuration=production",
     "build": "ng build --configuration=production",
+    "predeploy": "npm run build",
+    "deploy": "firebase deploy",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
