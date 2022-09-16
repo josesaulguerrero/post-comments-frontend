@@ -27,9 +27,9 @@ export class CommentFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.jwtService.getJWT().subscribe({
+    this.jwtService.userHasLoggedIn().subscribe({
       next: (next) => {
-        this.userHasJWT = !!next;
+        this.userHasJWT = next;
       },
     });
   }

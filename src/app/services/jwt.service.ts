@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, map, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 interface AuthResponse {
@@ -12,11 +12,13 @@ interface AuthResponse {
 })
 export class JwtService {
   private BASE_URL: string;
-  private jwtSubject: Subject<string | null>;
+  private jwt: string | null;
+  private jwtSubject$: Subject<string | null>;
 
   constructor(private httpClient: HttpClient) {
     this.BASE_URL = `${environment.ALPHA_URL}/auth/login`;
-    this.jwtSubject = new BehaviorSubject<string | null>(null);
+    this.jwt = null;
+    this.jwtSubject$ = new BehaviorSubject<string | null>(null);
   }
 
   public logIn(username: string, password: string): void {
@@ -26,13 +28,18 @@ export class JwtService {
         password,
       })
       .subscribe({
-        next: (next) => {
-          this.jwtSubject.next(next.accessToken);
+        next: ({ accessToken }) => {
+          this.jwt = accessToken;
+          this.jwtSubject$.next(accessToken);
         },
       });
   }
 
-  public getJWT(): Observable<string | null> {
-    return this.jwtSubject.asObservable();
+  public userHasLoggedIn(): Observable<boolean> {
+    return this.jwtSubject$.pipe(map((jwt) => !!jwt));
+  }
+
+  public getJWT(): string | null {
+    return this.jwt;
   }
 }

@@ -36,6 +36,7 @@ export class AuthService {
     from(signInWithPopup(this.auth, new GoogleAuthProvider()))
       .pipe(
         tap((next) => {
+          console.log('firebase login');
           this.jwtService.logIn(next.user.email!, next.user.email!);
         })
       )

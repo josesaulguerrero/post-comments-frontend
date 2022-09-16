@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { LoginComponent } from './UI/pages/login/login.component';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,13 @@ import { LoginComponent } from './UI/pages/login/login.component';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
   ],
-  providers: [],
+  providers: [
+    {
+      multi: true,
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
